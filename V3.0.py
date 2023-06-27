@@ -29,7 +29,7 @@ layout = [
     [p.Radio("Female", 'gender', default=False, key="female_radio")], 
     [p.Text("Enrollment Number: "), p.Input(key="STUDENT_ENR")],
     [p.Txt("Chose the Semester: "), p.Combo(["CO5I", "CO6I"], default_value="CO5I", s=(43,22), enable_events=True, readonly=True, key='COI')],
-    [p.Txt("Chose the Subject: "), p.Combo(["Environmental Studies (22447)", "Advanced Java Programming (22517)", "Operating System (22516)", "Client side scripting language (22519)"], default_value="Advanced Java Programming (22517)", s=(43,22), enable_events=True, readonly=True, key='COSUBJECT')],
+    [p.Txt("Chose the Subject: "), p.Combo(["Environmental Studies (22447)", "Advanced Java Programming (22517)", "Operating System (22516)", "Client side scripting language (22519)", "Software Testing (22518)"], default_value="Advanced Java Programming (22517)", s=(43,22), enable_events=True, readonly=True, key='COSUBJECT')],
     [p.Text("Student Roll NO: "), p.Input(key="STUDENT_ROLLNO")],
     # [p.Text("Teacher Name: "), p.Input(key="TEACHER_NAME")],
     [p.Txt("Chosse the Teacher: "), p.Combo(["Mr. Kazi A. S. M.", "Mr. Lokare A. P.", "Mr. Chavan A. Y.", "Mr. Sugare D. D.", "Ms. Kachare S. M.", "Mr. Patwari P. M.", "Mrs. Tele S. N.", "Ms. Nagrgoje A.", "Mr. Omkare R. S."], default_value="Mr. Sugare D. D.", s=(43,22), enable_events=True, readonly=True, key='TEACHER_NAME')],
@@ -61,12 +61,12 @@ OS_MicroProject_Dictionary = {
     },
     "course_outcome": {
         # Course Outcome for this Operating System MicroProject Section
-        1: "Install Linux operating system and configure it.",
-        2: "Use operating system tools to perform various functions.",
-        3: "Execute process commands for performing process management operations.",
-        4: "Apply scheduling algorithms to calculate turnaround time and average waiting time.",
-        5: "Calculate efficiency of different memory management techniques.",
-        6: "Apply file management techniques."
+        1: "CO1: Install Linux operating system and configure it.",
+        2: "CO2: Use operating system tools to perform various functions.",
+        3: "CO3: Execute process commands for performing process management operations.",
+        4: "CO4: Apply scheduling algorithms to calculate turnaround time and average waiting time.",
+        5: "CO5: Calculate efficiency of different memory management techniques.",
+        6: "CO6: Apply file management techniques."
     }
 }
 
@@ -97,12 +97,12 @@ AdvJPR_MicroProject_Dictionary = {
     },
     "course_outcome": {
         # Course Outcome for this Java Advance MicroProject Section
-        1: "Develop program using GUI framework (AWT and Swing)",
-        2: "Handle events of AWT and Swing Components",
-        3: "Develop programs to handle events in Java Programming.",
-        4: "Develop Java Programs using Networking Concepts",
-        5: "Develop programs using Database.",
-        6: "Develop programs using Servlets."
+        1: "CO1- Develop program using GUI framework (AWT and Swing)",
+        2: "CO2- Handle events of AWT and Swing Components",
+        3: "CO3- Develop programs to handle events in Java Programming.",
+        4: "CO4- Develop Java Programs using Networking Concepts",
+        5: "CO5- Develop programs using Database.",
+        6: "CO6- Develop programs using Servlets."
     }
 }
 
@@ -170,14 +170,13 @@ file1 = "Sample_template_microproject.docx"
 file2 = "Sample_template_certificate.docx"
 document_path1 = Path(__file__).parent / file1
 document_path2 = Path(__file__).parent / file2 
-# doc = docxtpl.DocxTemplate('temp.docx')
 doc1 = DocxTemplate(document_path1)
 doc2 = DocxTemplate(document_path2)
 
 
 # Showing the Window 
 # TODO: Add this to following after testing --> element_justification="right"
-window = p.Window("Mugbit V2.0", layout, element_justification="right",enable_close_attempted_event=True)
+window = p.Window("Mugbit V2.0", layout, element_justification="right", enable_close_attempted_event=True)
 
 # While Loop for fetching User Inputed Data
 while True:
@@ -255,20 +254,10 @@ while True:
                 values[f'APPLN_LINE{i}'] = value
         else:
             p.popup("Work is going on")
-        
 
-        
-
-        # Absolute Image Path
-        # imgPath = ["D:/MyPrograms/Micro Project Versions/Latest Version/Python/3rd Year/3rd Year/5th_sem/images/img1.jpg",
-        # "D:/MyPrograms/Micro Project Versions/Latest Version/Python/3rd Year/3rd Year/5th_sem/images/img2.jpg"]
         ImgSub = values["MICROPROJECT_IMG_SUBJECT"]
 
         downloader.download(ImgSub, limit=1, output_dir='download_imageHD_shriram', adult_filter_off=True, force_replace=False, timeout=60)
-
-        # imgPath = f"download_imageHD_shriram/{ImgSub}/Image_1.png"
-        # imgPath = f"download_imageHD_shriram/{ImgSub}/Image_1.jpg"
-        # imgPath = f"download_imageHD_shriram/{ImgSub}/Image_1.png"
 
         def get_first_image(ImgSub):
             for file in os.listdir(ImgSub):
@@ -276,24 +265,20 @@ while True:
                     return os.path.join(ImgSub, file)
             return None
         
-        
         imgPath = get_first_image(f"download_imageHD_shriram/{ImgSub}")
 
         if imgPath is not None:
             print(f"First image found: {imgPath}")
         else:
             print("No image found in the specified directory.")
+            p.popup_error("No image found in the specified directory.")
 
         # Image Handling
         image1 = InlineImage(doc1, imgPath, width=Mm(70))
-        # image2 = InlineImage(doc1, imgPath[1], width=Mm(20))
 
         # Add the image to the template
-        # context = {"IMG": image}
         values["IMG"] = image1
-        # values["IMG2"] = image2
-
-        
+        # values["IMG2"] = image2       
         
 
         doc1.render(values)
@@ -302,9 +287,8 @@ while True:
         output_path2 = Path(__file__).parent / f"{values['MICROPROJECT_TITLE']}-certificate.docx"
         doc1.save(output_path1)
         doc2.save(output_path2)
-        p.popup("Project Created!", f"File Saved at this path: {output_path1}")
+        p.popup_animated("loading.gif", "Project Created!", f"File Saved at this path: {output_path1}")
         
-
 # Closing the Window
 window.close()
 
