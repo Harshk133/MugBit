@@ -1,5 +1,6 @@
+# This Python File Holds the Data about Microproject!
 
-
+# OS Data Dictionary
 OS_MicroProject_Dictionary = {
     0: "Comparative Analysis of Operating System Types and Mobile OS Examples",
     1: "Comparative Analysis of Page Faults in Different Page Replacement Algorithms for a Given Page Reference String",
@@ -31,6 +32,7 @@ OS_MicroProject_Dictionary = {
     }
 }
 
+# Advance Java Data Dictionary
 AdvJPR_MicroProject_Dictionary = {
     0: "Energy Billing System: Usage-Based Billing Module Development",
     1: "Medical Store Inventory Management System",
@@ -67,6 +69,7 @@ AdvJPR_MicroProject_Dictionary = {
     }
 }
 
+# CSS Data Dictionary
 CSS_MicroProject_Dictionary = {
     0: "Develop a website on Storage management.",
     1: "Develop a website on E-Shopping cart.",
@@ -100,6 +103,7 @@ CSS_MicroProject_Dictionary = {
     }
 }
 
+# ENV Data Dictionary
 ENV_MicroProject_Dictionary = {
     0: "Prepare a report on visit to PUC Center. ",
     1: "Visit a near by RO plant and prepare detail technical report.",

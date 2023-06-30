@@ -1,0 +1,16 @@
+layout = [
+    [p.Image(r'MugBit.PNG')],
+    [p.Text("Student Full Name: "), p.Input(key="STUDENT_NAME")],
+    [p.Radio("Male", 'gender', default=True, key="male_radio")], 
+    [p.Radio("Female", 'gender', default=False, key="female_radio")], 
+    [p.Text("Enrollment Number: "), p.Input(key="STUDENT_ENR")],
+    [p.Txt("Chose the Semester: "), p.Combo(["CO5I", "CO6I"], default_value="CO5I", s=(43,22), enable_events=True, readonly=True, key='COI')],
+    [p.Txt("Chose the Subject: "), p.Combo(["Environmental Studies (22447)", "Advanced Java Programming (22517)", "Operating System (22516)", "Client side scripting language (22519)", "Software Testing (22518)"], default_value="Advanced Java Programming (22517)", s=(43,22), enable_events=True, readonly=True, key='COSUBJECT')],
+    [p.Text("Student Roll NO: "), p.Input(key="STUDENT_ROLLNO")],
+    # [p.Text("Teacher Name: "), p.Input(key="TEACHER_NAME")],
+    [p.Txt("Chosse the Teacher: "), p.Combo(["Mr. Kazi A. S. M.", "Mr. Lokare A. P.", "Mr. Chavan A. Y.", "Mr. Sugare D. D.", "Ms. Kachare S. M.", "Mr. Patwari P. M.", "Mrs. Tele S. N.", "Ms. Nagrgoje A.", "Mr. Omkare R. S."], default_value="Mr. Sugare D. D.", s=(43,22), enable_events=True, readonly=True, key='TEACHER_NAME')],
+    [p.Text("Micro-Project Title: "), p.Input(key="MICROPROJECT_TITLE")],
+    [p.Text("Micro-Project Subject: "), p.Input(key="MICROPROJECT_SUBJECT")],
+    [p.Text("Micro-Project Image Subject: "), p.Input(key="MICROPROJECT_IMG_SUBJECT")],
+    [p.Button("Create Document"), p.Exit()],
+]

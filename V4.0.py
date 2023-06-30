@@ -33,19 +33,31 @@ form = [
     [p.Radio("Female", 'gender', default=False, key="female_radio")], 
     [p.Text("Enrollment Number: "), p.Input(key="STUDENT_ENR")],
     [p.Txt("Chose the Semester: "), p.Combo(["CO5I", "CO6I"], default_value="CO5I", s=(43,22), enable_events=True, readonly=True, key='COI')],
-    [p.Txt("Chose the Subject: "), p.Combo(["Environmental Studies (22447)", "Advanced Java Programming (22517)", "Operating System (22516)", "Client side scripting language (22519)", "Software Testing (22518)"], default_value="Advanced Java Programming (22517)", s=(43,22), enable_events=True, readonly=True, key='COSUBJECT')],
+    [p.Txt("Choose the Subject: "), p.Combo(["Environmental Studies (22447)", "Advanced Java Programming (22517)", "Operating System (22516)", "Client side scripting language (22519)", "Software Testing (22518)"], default_value="Advanced Java Programming (22517)", s=(43,22), enable_events=True, readonly=True, key='COSUBJECT')],
     [p.Text("Student Roll NO: "), p.Input(key="STUDENT_ROLLNO")],
     # [p.Text("Teacher Name: "), p.Input(key="TEACHER_NAME")],
     [p.Txt("Chosse the Teacher: "), p.Combo(["Mr. Kazi A. S. M.", "Mr. Lokare A. P.", "Mr. Chavan A. Y.", "Mr. Sugare D. D.", "Ms. Kachare S. M.", "Mr. Patwari P. M.", "Mrs. Tele S. N.", "Ms. Nagrgoje A.", "Mr. Omkare R. S."], default_value="Mr. Sugare D. D.", s=(43,22), enable_events=True, readonly=True, key='TEACHER_NAME')],
-    [p.Text("Micro-Project Title: "), p.Input(key="MICROPROJECT_TITLE")],
-    [p.Text("Micro-Project Subject: "), p.Input(key="MICROPROJECT_SUBJECT")],
-    [p.Text("Micro-Project Image Subject: "), p.Input(key="MICROPROJECT_IMG_SUBJECT")],
+    # [p.Text("Micro-Project Title: "), p.Input(key="MICROPROJECT_TITLE")],
+    # [p.Text("Micro-Project Subject: "), p.Input(key="MICROPROJECT_SUBJECT")],
+    # [p.Text("Micro-Project Image Subject: "), p.Input(key="MICROPROJECT_IMG_SUBJECT")],
+    [p.Txt("Choose Available Microproject: "), p.Combo([
+        "Energy Billing System: Usage-Based Billing Module Development",
+        "Medical Store Inventory Management System",
+        "Library Book Issue Management System",
+        "Restaurant Order Management and Billing System",
+        "Online Bus Ticket Booking Module",
+        "Java mini application based on applet or swing.",
+        "IP finder",
+        "Word counter based on swing.",
+        "Notepad using applet",
+        "Simple games like snake, tic tac toe, Pac man, etc."
+    ], default_value="IP finder", s=(43,22), enable_events=True, readonly=True, key='COSUBJECT')],
 ]
 
 layout = [
     [
         p.Column(logo),
-        p.VSeparator(),
+        # p.VSeparator(),
         p.Column(form),
     ],
     [p.Button("Create Document"), p.Exit()]
@@ -64,12 +76,40 @@ doc2 = DocxTemplate(document_path2)
 # TODO: Add this to following after testing --> element_justification="right"
 window = p.Window("Mugbit V2.0", layout, element_justification="right", enable_close_attempted_event=True)
 
+# Showing the Progress Window
+progressLayout = [
+    # [p.ProgressBar(1000, orientation='h', size=(20, 20), key='progress_bar'), p.Cancel()],
+    [p.Text("Creating YOur Microproject..")],
+    [p.Text("Pulling Data From Internet...")],
+    [p.ProgressBar(1000, orientation='h', size=(20, 20), key='progress_bar')],
+]
+
+# Handling the Progress Bar Window
+progressWin = p.Window("Creating Your Projects...", progressLayout)
+progress_bar = progressWin['progress_bar']
+def progressBar():
+    '''
+    This Function Handles the Progress Bar
+    '''
+    for i in range(1000):
+        # check to see if the cancel button was clicked and exit loop if clicked
+        event, values = progressWin.read(timeout=10)
+        if event == 'Cancel'  or event == p.WIN_CLOSED:
+            break
+    # update bar with loop value +1 so that bar eventually reaches the maximum
+        progress_bar.UpdateBar(i + 1)
+        if(i == 1000):
+            break
+    
+    return True
+
 # While Loop for fetching User Inputed Data
 while True:
     event, values = window.read()
     if event == p.WIN_CLOSED or event == "Exit" and p.popup_yes_no('Do You Really Want to Close MugBit?') == 'Yes':
         break
     if event == "Create Document":
+        progressBar()
         values["STUDENT_NAME"].capitalize()
         values["STUDENT_ENR"]
         values["STUDENT_ROLLNO"]
@@ -81,7 +121,12 @@ while True:
             values['gender'] = 'Mr.'
         elif values['female_radio']:
             values['gender'] = 'Ms.'
-            
+        # elif event == 'COSUBJECT':
+        #     # selected_option = values['COSUBJECT']
+        #     selected_option = "Advanced Java Programming (22517)"
+        #     # window['-OUTPUT-'].update(f'You selected: {selected_option}')
+        #     if(selected_option):
+        #         window['-OUTPUT-'].update()
 
         subject = values["MICROPROJECT_SUBJECT"]
         try: 
@@ -164,8 +209,7 @@ while True:
 
         # Add the image to the template
         values["IMG"] = image1
-        # values["IMG2"] = image2       
-        
+        # values["IMG2"] = image2  
 
         doc1.render(values)
         doc2.render(values)
@@ -173,7 +217,11 @@ while True:
         output_path2 = Path(__file__).parent / f"{values['MICROPROJECT_TITLE']}-certificate.docx"
         doc1.save(output_path1)
         doc2.save(output_path2)
-        p.popup(f"Project Created! File Saved at this path: {output_path1}")
+
+        if(progressBar() == True):
+            progressWin.close()
+            p.popup(f"Project Created! File Saved at this path: {output_path1}")    
+            # To Open a file we can use os.startFile(pathOfFile)      
         
 # Closing the Window
 window.close()
