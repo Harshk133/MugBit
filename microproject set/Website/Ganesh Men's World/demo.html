@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Men's World</title>
+    <link rel="shortcut icon" href="img/logo.ico" />
+    <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Advent+Pro:300,700' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+  </head>
+  <body>
+   <header style="background-color: white; box-shadow: 0 1px 4px rgba(0, 0, 0, .1);">
+    <div class="container" style="padding-top: 8px;padding-bottom: 8px;">
+     <div class="grid grid-two">
+       <a href="index.html"><img src="img/logo.jpg" alt="logo" style="height: 64px ;" />
+
+     </div>
+     <div class="grid grid-two" style="padding-top: 24px;text-align: right;">
+  <span><a href="mycart.html">My Cart</a></span>
+     </div>
+    </div>
+   </header>
+   <main class="container">
+    <nav id="product-nav" class="full">
+     <li><a href="index.html">Home</a></li>
+     <li><a href="products.html">Products</a></li>
+     <li><a href="about.html">About</a></li>
+     <li><a href="contact.html">Contact</a></li>
+     <li style="float: right"><a href="login.html">Login</a></li>
+      <li style="float: right"><a href="register.html">Register</a></li>
+    </nav>
+   <div class="full">
+    <div class="grid grid-two">
+     <div class="detail">
+      <h1>A Demo Product</h1>
+      <img src="" id="demo-img" style="display: none;" />
+      <p>This is a demo product</p>
+      <span id="price">Rs 456</span>
+      <button class="button green" onclick="alert('Added to buy');">Buy Now</button>
+      <button class="button blue" onclick="alert('Added To Favourite');">Favourite</button>
+     </div>
+    </div>
+    <div class="grid grid-two">
+    <div class="box" style="float: right;" id="other">
+     <h3 class="uppr text-blue">Similar products</h3>
+
+    </div>
+    </div>
+   </div>
+   </main>
+   <script type="text/javascript">
+    /*load product based upon the url*/
+     var uri = window.location.href;
+     var img = 'img/product/shoes/1.jpeg';
+     if (uri.indexOf("#") > 0) {
+      img = uri.substring(uri.indexOf('#') + 1);
+      //dynamically load other similar type of product
+      //get the type like shoes , jeans etc
+      var type = img.substring(img.indexOf('product/') + 8).split('/')[0];
+      //get current image name
+
+      var numb = parseInt(img.substring(img.indexOf('product/') + 8).split('/')[1]);
+      var out = '';
+      for(var i = 1; i <= 5; i++) {
+        if (i == numb) continue;
+        out += '<div class="product"> <h3>Some ' + type + ' ' + i + '</h3> <img src="img/product/' + type + '/' + i + '.jpg" /> </div>';
+      }
+      document.getElementById('other').innerHTML += out;
+     }
+     document.getElementById('price').innerHTML ="Rs: <strong>" + Math.round(Math.random() * 1000) + "</strong>";
+     document.getElementById('demo-img').src = img;
+     document.getElementById('demo-img').style.display = 'block';
+   </script>
+   <footer>
+    <div class="container">
+    <div class="full">
+     <div class="grid grid-three">
+     <h4 class="text-blue">PRODUCTS</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+     <div class="grid grid-three">
+     <h4 class="text-blue">LINKS</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+     <div class="grid grid-three">
+     <h4 class="text-blue">CONTACT</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+    </div>
+    </div>
+     <div style="text-align: center; padding: 16px;">
+       &copy; Copyright - Ganesh More
+     </div>
+   </footer>
+  </body>
+</html>

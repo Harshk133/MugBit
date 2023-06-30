@@ -1,0 +1,23 @@
+div #payment{
+	 box-sizing:border-box;
+	 box-decoration-break:initial;
+	 border:3px solid gray;
+	 box-shadow:initial;
+	 width:900px;
+	 float:center;
+	 padding:30px 40px 30px;
+}
+input #name{
+	font-family:sans-serif;
+}
+label {
+	margin-top: 8px;
+	display: block;
+
+}
+form>input{
+	padding: 4px 8px;
+}
+html body{
+	background-color:lightgray;
+}

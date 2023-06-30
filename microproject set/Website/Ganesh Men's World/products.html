@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ganesh Men's World</title>
+    <link rel="shortcut icon" href="img/logo.ico" />
+    <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Advent+Pro:300,700' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+  </head>
+  <body>
+   <header style="background-color: white; box-shadow: 0 1px 4px rgba(0, 0, 0, .1);">
+    <div class="container" style="padding-top: 8px;padding-bottom: 8px;">
+     <div class="grid grid-two">
+       <a href="index.html"><img src="img/logo.jpg" alt="logo" style="height: 64px ;" />
+
+     </div>
+     <div class="grid grid-two" style="padding-top: 24px;text-align: right;">
+  <span><a href="mycart.html">Payment Details</a></span>
+     </div>
+    </div>
+   </header>
+   <main class="container">
+
+    <nav id="product-nav" class="full">
+     <li><a href="index.html">Home</a></li>
+     <li><a href="products.html">Products</a></li>
+     <li><a href="about.html">About</a></li>
+     <li><a href="contact.html">Contact</a></li>
+     <li style="float: right"><a href="login.html">Login</a></li>
+      <li style="float: right"><a href="register.html">Register</a></li>
+    </nav>
+    <div class="full">
+     <div class="grid grid-three">
+     <h1 class="text-blue">SHOES</h1>
+      <section class="box product">
+       <h2>Shoe 1</h2>
+       <img src="img/product/shoes/1.jpg" />
+       <p>nice shoes man</p>
+      </section>
+      <section class="box product">
+       <h2>Shoe 3</h2>
+       <img src="img/product/shoes/2.jpg" />
+       <p>nice shoes man</p>
+      </section>
+      <section class="box product">
+       <h2>Shoe 3</h2>
+       <img src="img/product/shoes/3.jpg" />
+       <p>nice shoes man</p>
+      </section>
+      <section class="box product">
+       <h2>Shoe 4</h2>
+       <img src="img/product/shoes/4.jpg" />
+       <p>nice shoes man</p>
+      </section>
+      <section class="box product">
+       <h2>Shoe 5</h2>
+       <img src="img/product/shoes/5.jpg" />
+       <p>nice shoes man</p>
+      </section>
+     </div>
+     <div class="grid grid-three">
+     <h1 class="text-blue">JEANS</h1>
+      <section class="box product">
+       <h2>jeans 1</h2>
+       <img src="img/product/jeans/1.jpg" />
+       <p>nice jeans man</p>
+      </section>
+      <section class="box product">
+       <h2>jeans 2</h2>
+       <img src="img/product/jeans/2.jpg" />
+       <p>nice jeans man</p>
+      </section>
+      <section class="box product">
+       <h2>jeans 3</h2>
+       <img src="img/product/jeans/3.jpg" />
+       <p>nice jeans man</p>
+      </section>
+      <section class="box product">
+       <h2>jeans 4</h2>
+       <img src="img/product/jeans/4.jpg" />
+       <p>nice jeans man</p>
+      </section>
+      <section class="box product">
+       <h2>jeans 5</h2>
+       <img src="img/product/jeans/5.jpg" />
+       <p>nice jeans man</p>
+      </section>
+     </div>
+     <div class="grid grid-three">
+     <h1 class="text-blue">T-SHIRTS</h1>
+      <section class="box product">
+       <h2>tshirts 1</h2>
+       <img src="img/product/tshirts/1.jpg" />
+       <p>nice tshirts man</p>
+      </section>
+      <section class="box product">
+       <h2>tshirts 3</h2>
+       <img src="img/product/tshirts/2.jpg" />
+       <p>nice tshirts man</p>
+      </section>
+      <section class="box product">
+       <h2>tshirts 3</h2>
+       <img src="img/product/tshirts/3.jpg" />
+       <p>nice tshirts man</p>
+      </section>
+      <section class="box product">
+       <h2>tshirts 4</h2>
+       <img src="img/product/tshirts/4.jpg" />
+       <p>nice tshirts man</p>
+      </section>
+      <section class="box product">
+       <h2>tshirts 5</h2>
+       <img src="img/product/tshirts/5.jpg" />
+       <p>nice tshirts man</p>
+      </section>
+     </div>
+    </div>
+   </main>
+   <footer>
+    <div class="container">
+    <div class="full">
+     <div class="grid grid-three">
+     <h4 class="text-blue">PRODUCTS</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+     <div class="grid grid-three">
+     <h4 class="text-blue">LINKS</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+     <div class="grid grid-three">
+     <h4 class="text-blue">CONTACT</h4>
+      <ul>
+       <li>T-shirts</li>
+       <li>Jeans</li>
+       <li>Shoes</li>
+      </ul>
+     </div>
+    </div>
+    </div>
+     <div style="text-align: center; padding: 16px;">
+       &copy; Copyright - Ganesh More
+     </div>
+   </footer>
+   <script type="text/javascript">
+    (function(d) {
+     var products = document.getElementsByClassName('product');
+     for(var i = products.length - 1;i >= 0 ; --i) {
+      products[i].onclick = function() {
+       var src = this.getElementsByTagName('img')[0].src;
+       document.location.href = 'demo.html#' +  src;
+      }
+     }
+    })(document);
+
+   </script>
+  </body>
+</html>
