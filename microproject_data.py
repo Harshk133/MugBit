@@ -1,5 +1,34 @@
 # This Python File Holds the Data about Microproject!
 
+# Creating the subjects dictionary..
+subjects = {
+    "Advanced Java Programming (22517)": [
+        "Energy Billing System: Usage-Based Billing Module Development",
+        "Medical Store Inventory Management System",
+        "Library Book Issue Management System",
+        "Restaurant Order Management and Billing System",
+        "Online Bus Ticket Booking Module",
+        "Java Mini Application based on Applet or Swing.",
+        "IP Finder",
+        "Word Counter Based on Swing.",
+        "Notepad Using Applet.",
+        "Simple Games like Snake, tic tac toe, Pac-man, etc."
+    ],
+    "Operating System (22516)": [
+        "Create a Report Depecting features of different types of Operating Systems - Batch Operating System, Multi-Programmed, Time-Shared, Multiprocessor Systems, Real-time Systems, Mobile OS for example.",
+        "Make a Comparative statement to calculate page fault for given page reference string by using different page replacement algorithms.",
+        "Prepare Help Guide using Shell Script Stir all the major Linux Commands.",
+        "Make a Comparative Chart to Calculate the total waiting and turnaround time of n processes with different CPU Scheduling algorithm."
+    ],
+    "Client Side Scripting Language (22519)": [
+        "Create a Web page that displays buyers information entry form containing name, address, city, pincode, email-id, phone number, product details, payment mode. Frame different validation rules for user inputs. Use JavaScript and Regular Expresssion to perform error checking on user input as per validation rules.",
+        "Build a simple slide show in JavaScript with six unique images. Design an appropriate web page with at least two sections: with a slide show in one section. When any image on this slide show is clicked display in orientation about it in other section. Use features for controlling window locations.",
+        "Build Simple slide show in JavaScript with six unique images. Design an appropriate web page with at least two sections: with a slide show in one section. When any image on this slide show is clicked display in one orientation about in other section. Use features for controlling window locations.",
+        "Create a simple animation in JavaScript: create a basic page showing a circle of white marble. Using the setTimeout() method creates an animation on the page that that makes an orange marble rotate around this circle by moving the orange marble to the next locaiton in the circle every second. Allow user to stop the animation by placing curson on any marble (use clearTimeout())."
+    ]
+}
+
+
 # OS Data Dictionary
 OS_MicroProject_Dictionary = {
     0: "Comparative Analysis of Operating System Types and Mobile OS Examples",
